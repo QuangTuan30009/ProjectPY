@@ -1,0 +1,38 @@
+# Nội dung giải thích cho dự án Painter
+
+Dự án này là một ứng dụng vẽ bằng tay trong thời gian thực, sử dụng camera và thư viện Mediapipe để nhận diện bàn tay.
+1. Import các thư viện cần thiết: OpenCV, Mediapipe, và NumPy.
+2. Khởi tạo webcam (cv2.VideoCapture) với kích thước 800x600.
+3. Cấu hình Mediapipe:
+   - Chỉ nhận diện 1 bàn tay (max_num_hands=1) với độ tin cậy tối thiểu là 0.7.
+   - mpDraw được sử dụng để vẽ các kết nối giữa các landmark của bàn tay.
+4. Xác định các màu vẽ và nhãn:
+   - Mỗi màu có nhãn tương ứng: Red, Blue, Green, Purple, Cyan, Yellow, và Erase (xóa).
+   - Màu hiện tại ban đầu được đặt là "Red".
+5. Các thông số vẽ:
+   - `brush_thickness` và `erase_thickness` xác định độ dày nét vẽ và nét xóa.
+   - `header_height` để hiển thị vùng lựa chọn màu sắc.
+6. Vòng lặp chính:
+   - Đọc khung hình từ webcam và lật để tạo hiệu ứng gương.
+   - Tạo canvas để lưu hình vẽ (nếu chưa được tạo).
+   - Hiển thị thanh chọn màu (header) ở trên cùng.
+7. Xử lý bàn tay:
+   - Xác định tọa độ các điểm landmark của bàn tay.
+   - Nếu ngón trỏ và ngón giữa nằm trong vùng header: Chọn màu vẽ tương ứng.
+   - Nếu chỉ ngón trỏ đưa lên: Chuyển sang chế độ vẽ.
+   - Nếu cả ngón trỏ và ngón giữa đều hạ xuống: Dừng vẽ.
+8. Ghép hình ảnh:
+   - Dùng các thao tác xử lý ảnh (bitwise_and, bitwise_or) để ghép hình ảnh từ canvas và khung hình webcam.
+9. Hiển thị kết quả:
+   - Khung hình chính được hiển thị trên cửa sổ "Painter".
+   - Canvas hiển thị riêng trên cửa sổ "Canvas".
+10. Thoát chương trình:
+   - Nhấn phím 'q' để thoát chương trình.
+   - Xử lý ngoại lệ khi dừng đột ngột bằng `KeyboardInterrupt`.
+"""
+
+# Tạo và ghi file
+with open("painter_explanation.txt", "w", encoding="utf-8") as file:
+    file.write(explanation)
+
+"File 'painter_explanation.txt' đã được tạo thành công!"
