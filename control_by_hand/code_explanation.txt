@@ -1,0 +1,19 @@
+Chúng ta sẽ khám phá cách sử dụng OpenCV, một thư viện phổ biến trong xử lý hình ảnh và thị giác máy tính, 
+để điều khiển chuột trên máy tính chỉ bằng cử chỉ tay.
+Chúng ta sẽ sử dụng mediapipe và mp_hand để nhận dạng và theo dõi các điểm đặc trưng của bàn tay trong thời gian thực.
+Bằng cách ánh xạ các cử chỉ tay thành các hành động chuột, 
+chúng ta có thể di chuyển chuột, bấm chuột trái, nhấn chuột phải và cuộn chuột chỉ bằng cử chỉ tay.
+
+Code này sử dụng thư viện OpenCV, Mediapipe, và PyAutoGUI để nhận diện bàn tay qua camera và điều khiển chuột:
+1. Import các thư viện cần thiết.
+2. Hàm kc: Tính khoảng cách giữa hai điểm.
+3. Cấu hình Mediapipe: Tạo đối tượng Hands để nhận diện bàn tay.
+4. Lấy kích thước màn hình: Sử dụng pyautogui.size() để xác định.
+5. Vòng lặp chính:
+    - Nhận dữ liệu từ camera.
+    - Xử lý hình ảnh và vẽ landmark bàn tay.
+    - Tính toán vị trí chuột và các hành động:
+        - Nhấn chuột trái: Khi khoảng cách giữa ngón cái và ngón trỏ nhỏ hơn giá trị chuẩn.
+        - Nhấn chuột phải: Khi khoảng cách giữa ngón cái và ngón út nhỏ hơn giá trị chuẩn.
+        - Cuộn chuột: Khi điều kiện giữa các ngón tay khác thỏa mãn.
+6. Thoát vòng lặp khi nhấn phím ESC.
